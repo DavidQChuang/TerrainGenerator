@@ -1,5 +1,5 @@
 # TerrainGenerator
-A terrain generator that supports interfacing with noise generation algorithms and 2D filtering algorithms to generate a 2D map, visualized in AWT.
+A seeded terrain generator that supports interfacing with noise generation algorithms and 2D filtering algorithms to generate a 2D map, visualized in AWT.
 
 Currently, the class includes a continuous perlin noise algorithm, a normal perlin noise algorithm, a 2D image smoothing algorithm, and various simple algorithms for altering the map. They all can be used by extending the abstract class `HeightMapAlgorithm` or `NoiseGenerator`.<br>
 
