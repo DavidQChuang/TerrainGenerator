@@ -522,15 +522,15 @@ public class MapGenerator {
       Output("Setting biome moistures", 1);
       
       for (int x = 0; x < sM; x++) {
-         for (int z = 0; z < sM; z++) {
-            if (biomes[x][z][0] == 7)
+         for (int y = 0; y < sM; y++) {
+            if (biomes[x][y][0] == 7)
                continue;
             for (Point p : waterCoords) {
-               double dist = Math.sqrt((x - p.x) * (x - p.x) + (z - p.y) * (z - p.y));
-               biomes[x][z][0] += dist / Math.pow(dist, 2) * 0.4;
+               double dist = Math.sqrt((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y));
+               biomes[x][y][0] += dist / Math.pow(dist, 2) * 0.4;
             }
-            biomes[x][z][0] = Math.min(Math.max(biomes[x][z][0], 1), 6);
-            biomes[x][z][1] = biomeElevationStrata(heightMap[x][z]);
+            biomes[x][y][0] = Math.min(Math.max(biomes[x][y][0], 1), 6);
+            biomes[x][y][1] = biomeElevationStrata(heightMap[x][y]);
          }
          if ((x + 1) % (sM / 4) == 0) {
             Output((x + 1) + "/" + sM + " coordinates filled", 2);
