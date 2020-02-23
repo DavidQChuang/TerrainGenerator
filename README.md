@@ -6,10 +6,10 @@ Currently, the class includes a continuous perlin noise algorithm, a normal perl
 # Example images:
 
 Biomes<br>
-<img src="BiomeMap.png" width="600" height="338" />
+<img src="Pictures/BiomeMap.png" width="600" height="338" />
 
 Heightmap<br>
-<img src="HeightMap.png" width="600" height="338" />
+<img src="Pictures/HeightMap.png" width="600" height="338" />
 
 Moisture<br>
-<img src="MoistureMap.png" width="600" height="338" />
+<img src="Pictures/MoistureMap.png" width="600" height="338" />
