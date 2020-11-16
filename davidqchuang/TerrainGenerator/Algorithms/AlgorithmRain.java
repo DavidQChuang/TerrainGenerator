@@ -70,11 +70,6 @@ public class AlgorithmRain extends Algorithm<ErosionParams> {
                     HeightmapNode node10 = nodes[nodePos.x + 1][nodePos.y];
                     HeightmapNode node11 = nodes[nodePos.x + 1][nodePos.y + 1];
 
-                    //node00 = node00.AddMoisture((half)d00);
-                    //node01 = node01.AddMoisture((half)d01);
-                    //node10 = node10.AddMoisture((half)d10);
-                    //node11 = node11.AddMoisture((half)d11);
-
                     node00.height += d00;
                     node01.height += d01;
                     node10.height += d10;
@@ -90,8 +85,8 @@ public class AlgorithmRain extends Algorithm<ErosionParams> {
                     // Use erosion brush to erode from all nodes inside the droplet's erosion radius
                     for (int x = -p.ErosionRadius; x < p.ErosionRadius; x++) {
                         for (int y = -p.ErosionRadius; y < p.ErosionRadius; y++) {
-                            int2 brushOffset = new int2(x, y);
-                            int2 brushPos = new int2(nodePos.x + brushOffset.x, nodePos.y + brushOffset.y);
+                        	float2 brushOffset = new float2(x, y);
+                        	float2 brushPos = new float2(nodePos.x + brushOffset.x, nodePos.y + brushOffset.y);
 
                             // continue if out of brush bounds
                             float brushDist = MoreMath.distance(brushOffset, pos);
@@ -102,7 +97,7 @@ public class AlgorithmRain extends Algorithm<ErosionParams> {
 
                             // Erode, weigted by the formula in 'erode' and the brush weight formula below.
                             float erosion = erode * (p.ErosionRadius - brushDist) / p.ErosionRadius / 2;
-                            nodes[brushPos.x][brushPos.y].height += erosion;
+                            nodes[(int)brushPos.x][(int)brushPos.y].height += erosion;
                             sediment += erosion;
                         }
                     }
@@ -114,7 +109,7 @@ public class AlgorithmRain extends Algorithm<ErosionParams> {
             int2 posI = new int2(pos);
             if (posI.x >= 0 && posI.x < mapSize.x && posI.y >= 0 && posI.y < mapSize.y) {
                 //Debug.Log(posI + "/" + water);
-                nodes[posI.x][posI.y].moisture += water;
+                nodes[posI.x][posI.y].moisture += water + 1;
             }
         }
 

@@ -4,6 +4,10 @@ import javax.swing.*;
 
 import davidqchuang.TerrainGenerator.Biomes;
 import davidqchuang.TerrainGenerator.HeightmapGenerator;
+import davidqchuang.TerrainGenerator.HeightmapNode;
+import davidqchuang.TerrainGenerator.NoiseGenerators.PerlinNoise;
+import davidqchuang.TerrainGenerator.Tools.MoreMath;
+import davidqchuang.TerrainGenerator.Tools.float2;
 import davidqchuang.TerrainGenerator.Tools.int2;
 import davidqchuang.TerrainGenerator.Visualization.HeightmapMeshDisplays.*;
 
@@ -11,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 
 class IntPointer {
@@ -40,17 +45,18 @@ public class DemoViewer {
 		// -----------------------------------------------------------------------------
 		// Map generation.
 
-		HeightmapGenerator map = new HeightmapGenerator(mapSize, mapSize, 22);
-		map.generateBaseHeightmap(int2.zero);
+		HeightmapGenerator map = new HeightmapGenerator(mapSize, mapSize, 0);
+		var nodes = map.generateBaseHeightmap(int2.zero);
+		map.distributeMoisture(nodes);
 
 		// -----------------------------------------------------------------------------
 		// 3D meshes for rendering.
 
 		List<List<Triangle>> meshes = new ArrayList<List<Triangle>>();
 
-		meshes.add((new HeightHMD()).GenerateMesh(map.Nodes));
-		meshes.add((new MoistureHMD()).GenerateMesh(map.Nodes));
-		meshes.add((new BiomeHMD()).GenerateMesh(map.Nodes));
+		meshes.add((new HeightHMD()).GenerateMesh(nodes));
+		meshes.add((new MoistureHMD()).GenerateMesh(nodes));
+		meshes.add((new BiomeHMD()).GenerateMesh(nodes));
 //		meshes.add(circle);
 //		meshes.add(tcircle);
 //		meshes.add(flatmap);

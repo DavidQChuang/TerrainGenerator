@@ -21,10 +21,10 @@ public class NumberGenerator {
 
     //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static int hash(int x) {
-        x ^= x << 13;
-		x += (x << 10) + 1;
+    	x ^= x << 13;
+        x += (x << 10) + 1;
 		x ^= x >> 17;
-        x ^= x << 5;
+      	x ^= x << 5;
         return x;
     }
     //x += (x << 10);
@@ -66,7 +66,6 @@ public class NumberGenerator {
     }
 
     // Pseudo-random value with range [0,1)
-    //[MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static float rand11(float x) { return floatConstruct(hash(Float.floatToIntBits((x)))); }
     public static float rand21(float2 v) { return floatConstruct(hash(new int2(Float.floatToIntBits(v.x),Float.floatToIntBits(v.y)))); }
     public static float rand31(float3 v) { return floatConstruct(hash(new int3(Float.floatToIntBits(v.x),Float.floatToIntBits(v.y),Float.floatToIntBits(v.z)))); }

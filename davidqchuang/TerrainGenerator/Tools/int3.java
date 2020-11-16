@@ -6,7 +6,7 @@ public class int3 {
 	public int z;
 
 	public final static int3 zero = new int3();
-	
+
 	public int3() {
 		x = 0;
 		y = 0;
@@ -17,5 +17,9 @@ public class int3 {
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+
+	public float3 toFloat3() {
+		return new float3(x, y, z);
 	}
 }

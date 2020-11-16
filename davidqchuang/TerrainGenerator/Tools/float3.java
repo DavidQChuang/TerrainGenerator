@@ -18,10 +18,10 @@ public class float3 {
 		this.y = y;
 		this.z = z;
 	}
-	public float3(float2 v, float x) {
+	public float3(float2 v, float z) {
 		this.x = v.x;
 		this.y = v.y;
-		this.z = x;
+		this.z = z;
 	}
 	public float3(int x, int2 v) {
 		this.x = x;
